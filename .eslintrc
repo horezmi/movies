@@ -1,0 +1,50 @@
+{
+    "env": {
+      "browser": true,
+      "node": true,
+      "es2020": true
+    },
+    "extends": [
+      "airbnb",
+      "airbnb/hooks",
+      "eslint:recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings",
+      "plugin:import/typescript"
+    ],
+    "plugins": ["html", "import", "@typescript-eslint"],
+    "parser": "@typescript-eslint/parser",
+    "rules": {
+      "react/jsx-filename-extension": "off",
+      "import/extensions": "off",
+      "camelcase": "off",
+      "no-undef": "off",
+      "no-unused-vars": "off",
+      "no-console": "off",
+      "no-use-before-define": "off",
+      "no-shadow": "off",
+      "import/no-unresolved": "off",
+      "no-param-reassign": "off",
+      "react/button-has-type": "off",
+      "linebreak-style": "off",
+      "react/jsx-one-expression-per-line": "off",
+      "jsx-a11y/click-events-have-key-events": "off",
+      "jsx-a11y/no-static-element-interactions": "off",
+      "jsx-a11y/no-autofocus": "off",
+      "react/jsx-props-no-spreading": "off",
+      "import/no-extraneous-dependencies": "off",
+      "object-curly-newline": "off",
+      "comma-dangle": "off",
+      "react-hooks/exhaustive-deps": "off",
+      "max-len": [
+        "error",
+        {
+          "code": 120,
+          "ignoreUrls": true,
+          "ignoreTemplateLiterals": true
+        }
+      ],
+      "react/no-array-index-key": "off",
+      "default-case": "off"
+    }
+  }
