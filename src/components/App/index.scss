@@ -1,0 +1,41 @@
+.app {
+    margin: 0 auto;
+    max-width: 1400px;
+
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .card {
+        display: flex;
+
+        width: 700px;
+        height: 300px;
+
+        &-image {
+            img {
+                width: 250px;
+            }
+        }
+
+        &-info {
+            width: 450px;
+            padding: 15px;
+
+            &__header {
+                display: flex;
+                justify-content: space-between;
+            }
+            &__rating-circle {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                border: 5px yellow solid;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+}
