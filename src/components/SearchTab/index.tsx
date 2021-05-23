@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SearchPanel, CardList, Pagination } from 'components';
+import { SearchPanel, CardList, Pagination, Loader } from 'components';
 
 import { getSearchedMovies } from 'helpers/fetchData';
 import { MoviesType } from 'types/interfaces';
@@ -11,13 +11,14 @@ const SearchTab = () => {
   const [movies, setMovies] = useState<MoviesType[]>([]);
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const getData = async () => {
       const data = await getSearchedMovies('return', page);
       setTotalPages(data.total_results);
-      console.log(data);
       setMovies(data.results);
+      setLoading(false);
     };
     getData();
   }, [page]);
@@ -26,7 +27,9 @@ const SearchTab = () => {
     setPage(pageNumber);
   };
 
-  return (
+  return loading ? (
+    <Loader />
+  ) : (
     <div className="search-tab">
       <SearchPanel />
       <CardList movies={movies} />
