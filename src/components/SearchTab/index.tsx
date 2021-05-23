@@ -14,7 +14,7 @@ const SearchTab = () => {
   useEffect(() => {
     const take = async () => {
       const taked = await getSearchedMovies('return', page);
-      setMovies(taked.results.slice(0, 6));
+      setMovies(taked.results);
     };
     take();
   }, [page]);
