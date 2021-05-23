@@ -9,7 +9,7 @@ const Pagination = ({ onChange, totalPages }: any) => {
   return (
     <div className="pagination">
       <PaginationAntd
-        defaultCurrent={1}
+        defaultPageSize={20}
         total={totalPages}
         style={{ padding: '15px' }}
         responsive

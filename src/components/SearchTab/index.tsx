@@ -15,7 +15,8 @@ const SearchTab = () => {
   useEffect(() => {
     const getData = async () => {
       const data = await getSearchedMovies('return', page);
-      setTotalPages(data.total_pages);
+      setTotalPages(data.total_results);
+      console.log(data);
       setMovies(data.results);
     };
     getData();
