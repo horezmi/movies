@@ -1,9 +1,10 @@
 import React from 'react';
 import { Card as CardAntd, Rate } from 'antd';
 
+import { MoviesType } from 'types/interfaces';
 import './index.scss';
 
-const Card = ({ title, poster_path, vote_average, release_date, overview }: any) => {
+const Card = ({ title, poster_path, vote_average, release_date, overview }: MoviesType) => {
   const a = 2;
   console.log(a);
   return (
@@ -32,7 +33,7 @@ const Card = ({ title, poster_path, vote_average, release_date, overview }: any)
             </div>
 
             <div className="card-info__rating-choose">
-              <Rate className="rate__star" allowHalf count={10} />
+              <Rate className="card-info__rating-choose_stars" allowHalf count={10} />
             </div>
           </div>
         </div>

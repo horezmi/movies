@@ -4,12 +4,11 @@ import { Pagination as PaginationAntd } from 'antd';
 
 import './index.scss';
 
-const Pagination = () => {
-  const a = 2;
-  //   onChange={handlePagination}
+const Pagination = ({ onChange }: any) => {
+  const handleChange = (pageNubmer: number) => onChange(pageNubmer);
   return (
     <div className="pagination">
-      <PaginationAntd defaultCurrent={1} total={50} style={{ padding: '15px' }} responsive />
+      <PaginationAntd defaultCurrent={1} total={50} style={{ padding: '15px' }} responsive onChange={handleChange} />
     </div>
   );
 };
