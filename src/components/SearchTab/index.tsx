@@ -10,24 +10,26 @@ import './index.scss';
 const SearchTab = () => {
   const [movies, setMovies] = useState<MoviesType[]>([]);
   const [page, setPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>(1);
 
   useEffect(() => {
-    const take = async () => {
-      const taked = await getSearchedMovies('return', page);
-      setMovies(taked.results);
+    const getData = async () => {
+      const data = await getSearchedMovies('return', page);
+      setTotalPages(data.total_pages);
+      setMovies(data.results);
     };
-    take();
+    getData();
   }, [page]);
 
-  const handleChangePagination = (pageNubmer: number) => {
-    setPage(pageNubmer);
+  const handleChangePagination = (pageNumber: number) => {
+    setPage(pageNumber);
   };
 
   return (
     <div className="search-tab">
       <SearchPanel />
       <CardList movies={movies} />
-      <Pagination onChange={handleChangePagination} />
+      <Pagination onChange={handleChangePagination} totalPages={totalPages} />
     </div>
   );
 };
