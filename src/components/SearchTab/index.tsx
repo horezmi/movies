@@ -12,10 +12,11 @@ const SearchTab = () => {
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(true);
+  const [search, setSearch] = useState<string>('return');
 
   useEffect(() => {
     const getData = async () => {
-      const data = await getSearchedMovies('return', page);
+      const data = await getSearchedMovies(search, page);
       setTotalPages(data.total_results);
       setMovies(data.results);
       setLoading(false);

@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card as CardAntd, Rate } from 'antd';
 
 import { MoviesType } from 'types/interfaces';
 import './index.scss';
 
 const Card = ({ title, poster_path, vote_average, release_date, overview }: MoviesType) => {
-  const a = 2;
-  console.log(a);
+  const [srcImg, setSrcImg] = useState<string>(`https://image.tmdb.org/t/p/w500${poster_path}`);
+
+  const onErrorImg = () => {
+    setSrcImg('https://www.wildhareboca.com/wp-content/uploads/sites/310/2018/03/image-not-available.jpg');
+  };
   return (
     <div className="card-wrap">
       <CardAntd bodyStyle={{ padding: 5, margin: 10 }}>
         <div className="card">
           <div className="card-image">
-            <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} />
+            <img src={srcImg} alt={title} onError={onErrorImg} />
           </div>
 
           <div className="card-info">
