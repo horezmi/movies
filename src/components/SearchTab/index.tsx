@@ -22,17 +22,21 @@ const SearchTab = () => {
       setLoading(false);
     };
     getData();
-  }, [page]);
+  }, [page, search]);
 
   const handleChangePagination = (pageNumber: number) => {
     setPage(pageNumber);
   };
 
+  const onSearch = (value: string) => {
+    if (value === '') value = 'return';
+    setSearch(value);
+  };
   return loading ? (
     <Loader />
   ) : (
     <div className="search-tab">
-      <SearchPanel />
+      <SearchPanel onSearch={onSearch} />
       <CardList movies={movies} />
       <Pagination onChange={handleChangePagination} totalPages={totalPages} />
     </div>
