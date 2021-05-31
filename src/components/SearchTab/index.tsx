@@ -29,7 +29,10 @@ const SearchTab = () => {
   };
 
   const onSearch = (value: string) => {
-    if (value === '') value = 'return';
+    if (value === '') {
+      value = 'return';
+      setMovies([]);
+    }
     setSearch(value);
   };
   return loading ? (

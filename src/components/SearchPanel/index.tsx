@@ -10,7 +10,6 @@ const SearchPanel = ({ onSearch }: any) => {
   };
   return (
     <div className="search-panel">
-      {value}
       <Input
         className="search-panel-input"
         value={value}
