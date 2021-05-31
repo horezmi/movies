@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import cn from 'classnames';
 import { Card as CardAntd, Rate } from 'antd';
 
 import { MoviesType } from 'types/interfaces';
@@ -19,6 +20,12 @@ const Card = ({ title, poster_path, vote_average, release_date, overview }: Movi
     }
     return text;
   };
+  const circleClasses = cn({
+    'card-info__rating-circle': true,
+    red: vote_average < 5,
+    yellow: vote_average >= 5 && vote_average < 7.5,
+    green: vote_average >= 7.5,
+  });
   return (
     <div className="card-wrap">
       <CardAntd bodyStyle={{ padding: 5, margin: 10 }}>
@@ -29,8 +36,8 @@ const Card = ({ title, poster_path, vote_average, release_date, overview }: Movi
 
           <div className="card-info">
             <div className="card-info__header">
-              <h2>{title}</h2>
-              <div className="card-info__rating-circle">
+              <h2 className="card-info__header_title">{title}</h2>
+              <div className={circleClasses}>
                 <span>{vote_average}</span>
               </div>
             </div>
