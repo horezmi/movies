@@ -1,7 +1,7 @@
 import React from 'react';
 
 const RatingTab = () => {
-  const a = 1;
+  const a = 'test';
   console.log(a);
   return (
     <div className="rating-tab">

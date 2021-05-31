@@ -10,6 +10,15 @@ const Card = ({ title, poster_path, vote_average, release_date, overview }: Movi
   const onErrorImg = () => {
     setSrcImg('https://www.wildhareboca.com/wp-content/uploads/sites/310/2018/03/image-not-available.jpg');
   };
+  const cutText = (text: string) => {
+    if (text.length > 550) {
+      const cated = text.substring(0, 550);
+      const idx = cated.lastIndexOf('.');
+      const result = text.substring(0, idx + 1);
+      return result;
+    }
+    return text;
+  };
   return (
     <div className="card-wrap">
       <CardAntd bodyStyle={{ padding: 5, margin: 10 }}>
@@ -32,7 +41,7 @@ const Card = ({ title, poster_path, vote_average, release_date, overview }: Movi
             </div>
 
             <div className="card-info__description">
-              <p>{overview}</p>
+              <p>{cutText(overview)}</p>
             </div>
 
             <div className="card-info__rating-choose">
