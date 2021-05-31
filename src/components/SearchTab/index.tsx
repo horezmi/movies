@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { SearchPanel, CardList, Pagination, Loader } from 'components';
 
-import { getSearchedMovies } from 'helpers/fetchData';
+import { getSearchedMovies, createGuestSession } from 'helpers/Api';
+import { getGuestSessionIdFromLS, setGuestSessionIdToLS } from 'helpers/LocalStorage';
 import { MoviesType } from 'types/interfaces';
 
 import 'antd/dist/antd.css';
@@ -13,16 +14,28 @@ const SearchTab = () => {
   const [totalPages, setTotalPages] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(true);
   const [search, setSearch] = useState<string>('return');
+  const [sessionId, setSessionId] = useState<string>(getGuestSessionIdFromLS() || '');
+
+  const getMoviesData = async () => {
+    const data = await getSearchedMovies(search, page);
+    setTotalPages(data.total_results);
+    setMovies(data.results);
+    setLoading(false);
+  };
+
+  const getSessionData = async () => {
+    const { guest_session_id } = await createGuestSession();
+    setGuestSessionIdToLS(guest_session_id);
+    setSessionId(guest_session_id);
+  };
 
   useEffect(() => {
-    const getData = async () => {
-      const data = await getSearchedMovies(search, page);
-      setTotalPages(data.total_results);
-      setMovies(data.results);
-      setLoading(false);
-    };
-    getData();
+    getMoviesData();
   }, [page, search]);
+
+  useEffect(() => {
+    getSessionData();
+  }, []);
 
   const handleChangePagination = (pageNumber: number) => {
     setPage(pageNumber);

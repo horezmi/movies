@@ -19,4 +19,9 @@ const getSearchedMovies = async (searchValue: string, page: number) => {
   return data;
 };
 
-export { fetchData, getSearchedMovies, BASE_URL, API_KEY };
+const createGuestSession = async () => {
+  const data = await fetchData(`${BASE_URL}authentication/guest_session/new?api_key=${API_KEY}`);
+  return data;
+};
+
+export { fetchData, getSearchedMovies, createGuestSession, BASE_URL, API_KEY };

@@ -7,7 +7,6 @@ import './index.scss';
 
 const App = () => {
   const { TabPane } = Tabs;
-
   return (
     <div className="app">
       <Tabs
