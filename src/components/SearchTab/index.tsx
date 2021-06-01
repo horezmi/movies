@@ -8,7 +8,7 @@ import { MoviesType } from 'types/interfaces';
 import 'antd/dist/antd.css';
 import './index.scss';
 
-const SearchTab = ({ onChangeStar }: any) => {
+const SearchTab = () => {
   const [sessionId, setSessionId] = useState<string>(getLocalStorage('sessionId') || '');
   const [movies, setMovies] = useState<MoviesType[]>([]);
   const [page, setPage] = useState<number>(1);

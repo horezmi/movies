@@ -2,6 +2,7 @@ import { getLocalStorage } from 'helpers/LocalStorage';
 
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = 'c44b5b2b9ec7f5830a7641106c455833';
+const sessionId = getLocalStorage('sessionId');
 
 const fetchData = async (url: string, value: object = {}) => {
   if (!value) {
@@ -40,8 +41,7 @@ const createGuestSession = async () => {
 };
 
 const postRatedFilm = async ({ movieId, rating }: any) => {
-  const sessionId = getLocalStorage('sessionId');
-  const data = await fetchData(`${BASE_URL}/movie/${movieId}/rating?api_key=${API_KEY}&guest_session_id=${sessionId}`, {
+  const data = await fetchData(`${BASE_URL}movie/${movieId}/rating?api_key=${API_KEY}&guest_session_id=${sessionId}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -51,4 +51,9 @@ const postRatedFilm = async ({ movieId, rating }: any) => {
   return data;
 };
 
-export { fetchData, getSearchedMovies, createGuestSession, postRatedFilm, BASE_URL, API_KEY };
+const getRatedFilms = async () => {
+  const data = await fetchData(`${BASE_URL}guest_session/${sessionId}/rated/movies?api_key=${API_KEY}`);
+  return data;
+};
+
+export { fetchData, getSearchedMovies, createGuestSession, postRatedFilm, getRatedFilms, BASE_URL, API_KEY };
