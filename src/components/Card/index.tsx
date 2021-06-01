@@ -7,6 +7,7 @@ import './index.scss';
 
 const Card = ({ title, poster_path, vote_average, release_date, overview }: MoviesType) => {
   const [srcImg, setSrcImg] = useState<string>(`https://image.tmdb.org/t/p/w500${poster_path}`);
+  const [starValue, setStarValue] = useState<number>(0);
 
   const onErrorImg = () => {
     setSrcImg('https://www.wildhareboca.com/wp-content/uploads/sites/310/2018/03/image-not-available.jpg');
@@ -26,6 +27,9 @@ const Card = ({ title, poster_path, vote_average, release_date, overview }: Movi
     yellow: vote_average >= 5 && vote_average < 7.5,
     green: vote_average >= 7.5,
   });
+  const handleChangeStar = (value: number) => {
+    setStarValue(value);
+  };
   return (
     <div className="card-wrap">
       <CardAntd bodyStyle={{ padding: 5, margin: 10 }}>
@@ -52,7 +56,14 @@ const Card = ({ title, poster_path, vote_average, release_date, overview }: Movi
             </div>
 
             <div className="card-info__rating-choose">
-              <Rate className="card-info__rating-choose_stars" allowHalf count={10} />
+              {starValue}
+              <Rate
+                className="card-info__rating-choose_stars"
+                value={starValue}
+                onChange={handleChangeStar}
+                allowHalf
+                count={10}
+              />
             </div>
           </div>
         </div>

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { SearchPanel, CardList, Pagination, Loader } from 'components';
 
-import { getSearchedMovies, createGuestSession } from 'helpers/Api';
+import { getSearchedMovies, createGuestSession, postRatedFilm } from 'helpers/Api';
 import { getGuestSessionIdFromLS, setGuestSessionIdToLS } from 'helpers/LocalStorage';
 import { MoviesType } from 'types/interfaces';
 
 import 'antd/dist/antd.css';
 import './index.scss';
 
-const SearchTab = () => {
+const SearchTab = ({ onChangeStar }: any) => {
   const [movies, setMovies] = useState<MoviesType[]>([]);
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
@@ -23,6 +23,8 @@ const SearchTab = () => {
     setLoading(false);
   };
 
+  postRatedFilm();
+
   const getSessionData = async () => {
     const { guest_session_id } = await createGuestSession();
     setGuestSessionIdToLS(guest_session_id);
@@ -34,7 +36,9 @@ const SearchTab = () => {
   }, [page, search]);
 
   useEffect(() => {
-    getSessionData();
+    if (!sessionId) {
+      getSessionData();
+    }
   }, []);
 
   const handleChangePagination = (pageNumber: number) => {
@@ -48,6 +52,11 @@ const SearchTab = () => {
     }
     setSearch(value);
   };
+
+  const hanglePostRatedFilm = () => {
+    console.log('e12e21e');
+  };
+  // onChangeStar={hanglePostRatedFilm}
   return loading ? (
     <Loader />
   ) : (
