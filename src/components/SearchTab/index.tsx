@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { SearchPanel, CardList, Pagination, Loader } from 'components';
 
 import { getSearchedMovies, createGuestSession, postRatedFilm } from 'helpers/Api';
-import { getGuestSessionIdFromLS, setGuestSessionIdToLS } from 'helpers/LocalStorage';
+import { setLocalStorage, getLocalStorage } from 'helpers/LocalStorage';
 import { MoviesType } from 'types/interfaces';
 
 import 'antd/dist/antd.css';
@@ -14,7 +14,7 @@ const SearchTab = ({ onChangeStar }: any) => {
   const [totalPages, setTotalPages] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(true);
   const [search, setSearch] = useState<string>('return');
-  const [sessionId, setSessionId] = useState<string>(getGuestSessionIdFromLS() || '');
+  const [sessionId, setSessionId] = useState<string>(getLocalStorage('sessionId') || '');
 
   const getMoviesData = async () => {
     const data = await getSearchedMovies(search, page);
@@ -27,7 +27,7 @@ const SearchTab = ({ onChangeStar }: any) => {
 
   const getSessionData = async () => {
     const { guest_session_id } = await createGuestSession();
-    setGuestSessionIdToLS(guest_session_id);
+    setLocalStorage('sessionId', guest_session_id);
     setSessionId(guest_session_id);
   };
 
