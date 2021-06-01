@@ -1,3 +1,5 @@
+import { getLocalStorage } from 'helpers/LocalStorage';
+
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = 'c44b5b2b9ec7f5830a7641106c455833';
 
@@ -37,16 +39,15 @@ const createGuestSession = async () => {
   return data;
 };
 
-const postRatedFilm = async () => {
-  // https://api.themoviedb.org/3/movie/{movie_id}/rating?api_key=<<api_key>>
-  const data = await fetchData(`${BASE_URL}/movie/10/rating?api_key=${API_KEY}`, {
+const postRatedFilm = async ({ movieId, rating }: any) => {
+  const sessionId = getLocalStorage('sessionId');
+  const data = await fetchData(`${BASE_URL}/movie/${movieId}/rating?api_key=${API_KEY}&guest_session_id=${sessionId}`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ value: 8.5 }),
+    body: JSON.stringify({ value: rating }),
   });
-  console.log(data);
   return data;
 };
 

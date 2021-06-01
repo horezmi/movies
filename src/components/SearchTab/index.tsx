@@ -9,12 +9,13 @@ import 'antd/dist/antd.css';
 import './index.scss';
 
 const SearchTab = ({ onChangeStar }: any) => {
+  const [sessionId, setSessionId] = useState<string>(getLocalStorage('sessionId') || '');
   const [movies, setMovies] = useState<MoviesType[]>([]);
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(true);
   const [search, setSearch] = useState<string>('return');
-  const [sessionId, setSessionId] = useState<string>(getLocalStorage('sessionId') || '');
+  const [rated, setRated] = useState<any>({ movieId: 0, rating: 0 });
 
   const getMoviesData = async () => {
     const data = await getSearchedMovies(search, page);
@@ -22,8 +23,6 @@ const SearchTab = ({ onChangeStar }: any) => {
     setMovies(data.results);
     setLoading(false);
   };
-
-  postRatedFilm();
 
   const getSessionData = async () => {
     const { guest_session_id } = await createGuestSession();
@@ -53,16 +52,19 @@ const SearchTab = ({ onChangeStar }: any) => {
     setSearch(value);
   };
 
-  const hanglePostRatedFilm = () => {
-    console.log('e12e21e');
+  const hangleRatedFilm = (movieId: number, rating: number) => {
+    setRated({ movieId, rating });
   };
-  // onChangeStar={hanglePostRatedFilm}
+
+  useEffect(() => {
+    if (rated.rating) postRatedFilm(rated);
+  }, [rated]);
   return loading ? (
     <Loader />
   ) : (
     <div className="search-tab">
       <SearchPanel onSearch={onSearch} />
-      <CardList movies={movies} />
+      <CardList movies={movies} onChangeStar={hangleRatedFilm} />
       <Pagination onChange={handleChangePagination} totalPages={totalPages} />
     </div>
   );

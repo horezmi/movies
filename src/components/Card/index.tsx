@@ -5,9 +5,8 @@ import { Card as CardAntd, Rate } from 'antd';
 import { MoviesType } from 'types/interfaces';
 import './index.scss';
 
-const Card = ({ title, poster_path, vote_average, release_date, overview }: MoviesType) => {
+const Card = ({ id, title, poster_path, vote_average, release_date, overview, onChangeStar }: any) => {
   const [srcImg, setSrcImg] = useState<string>(`https://image.tmdb.org/t/p/w500${poster_path}`);
-  const [starValue, setStarValue] = useState<number>(0);
 
   const onErrorImg = () => {
     setSrcImg('https://www.wildhareboca.com/wp-content/uploads/sites/310/2018/03/image-not-available.jpg');
@@ -28,7 +27,7 @@ const Card = ({ title, poster_path, vote_average, release_date, overview }: Movi
     green: vote_average >= 7.5,
   });
   const handleChangeStar = (value: number) => {
-    setStarValue(value);
+    onChangeStar(id, value);
   };
   return (
     <div className="card-wrap">
@@ -56,14 +55,7 @@ const Card = ({ title, poster_path, vote_average, release_date, overview }: Movi
             </div>
 
             <div className="card-info__rating-choose">
-              {starValue}
-              <Rate
-                className="card-info__rating-choose_stars"
-                value={starValue}
-                onChange={handleChangeStar}
-                allowHalf
-                count={10}
-              />
+              <Rate className="card-info__rating-choose_stars" onChange={handleChangeStar} allowHalf count={10} />
             </div>
           </div>
         </div>
