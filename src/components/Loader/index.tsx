@@ -4,7 +4,7 @@ import { Spin } from 'antd';
 import './index.scss';
 
 const Loader = () => {
-  const a = 'test';
+  const a = 'test loader';
   console.log(a);
   return (
     <div className="loader">

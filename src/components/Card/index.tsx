@@ -5,7 +5,7 @@ import { Card as CardAntd, Rate } from 'antd';
 import { MoviesType } from 'types/interfaces';
 import './index.scss';
 
-const Card = ({ id, title, poster_path, vote_average, release_date, overview, onChangeStar }: any) => {
+const Card = ({ id, title, poster_path, vote_average, release_date, overview, onChangeStar, rating }: any) => {
   const [srcImg, setSrcImg] = useState<string>(`https://image.tmdb.org/t/p/w500${poster_path}`);
 
   const onErrorImg = () => {
@@ -55,7 +55,13 @@ const Card = ({ id, title, poster_path, vote_average, release_date, overview, on
             </div>
 
             <div className="card-info__rating-choose">
-              <Rate className="card-info__rating-choose_stars" onChange={handleChangeStar} allowHalf count={10} />
+              <Rate
+                className="card-info__rating-choose_stars"
+                value={rating}
+                onChange={handleChangeStar}
+                allowHalf
+                count={10}
+              />
             </div>
           </div>
         </div>

@@ -7,9 +7,9 @@ const RatingTab = () => {
   const [ratedMovies, setRatedMovies] = useState<MoviesType[]>([]);
 
   const getRatedMovies = async () => {
-    const data = await getRatedFilms();
-    console.log(data);
-    setRatedMovies(data.results);
+    const { results } = await getRatedFilms();
+    console.log(results, 'rated');
+    setRatedMovies(results);
   };
   useEffect(() => {
     getRatedMovies();
