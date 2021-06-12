@@ -8,11 +8,9 @@ import './index.scss';
 const CardList = ({
   movies = [],
   onChangeStar,
-  rating = 0,
 }: {
   movies: MoviesType[];
   onChangeStar: any;
-  rating?: number;
 }) => {
   console.log(movies, 'movies');
   const cards = movies?.map((elem) => <Card key={elem.title + nanoid()} onChangeStar={onChangeStar} {...elem} />);

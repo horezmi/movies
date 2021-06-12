@@ -9,7 +9,6 @@ import 'antd/dist/antd.css';
 import './index.scss';
 
 const SearchTab = () => {
-  const [sessionId, setSessionId] = useState<string>(getLocalStorage('sessionId') || '');
   const [movies, setMovies] = useState<MoviesType[]>([]);
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
@@ -18,37 +17,23 @@ const SearchTab = () => {
   const [rated, setRated] = useState<any>({ movieId: 0, rating: 0 });
 
   const getMoviesData = async () => {
-    const data = await getSearchedMovies(search, page);
-    setTotalPages(data.total_results);
-    setMovies(data.results);
+    const { total_results, results } = await getSearchedMovies(search, page);
+    setTotalPages(total_results);
+    setMovies(results);
     setLoading(false);
-  };
-
-  const getSessionData = async () => {
-    const { guest_session_id } = await createGuestSession();
-    setLocalStorage('sessionId', guest_session_id);
-    setSessionId(guest_session_id);
   };
 
   useEffect(() => {
     getMoviesData();
   }, [page, search]);
 
-  useEffect(() => {
-    if (!sessionId) {
-      getSessionData();
-    }
-  }, []);
-
   const handleChangePagination = (pageNumber: number) => {
     setPage(pageNumber);
   };
 
   const onSearch = (value: string) => {
-    if (value === '') {
-      value = 'return';
-      setMovies([]);
-    }
+    if (value === '') value = 'return';
+    setLoading(true);
     setSearch(value);
   };
 
@@ -59,13 +44,19 @@ const SearchTab = () => {
   useEffect(() => {
     if (rated.rating) postRatedFilm(rated);
   }, [rated]);
-  return loading ? (
-    <Loader />
-  ) : (
+  return (
     <div className="search-tab">
-      <SearchPanel onSearch={onSearch} />
-      <CardList movies={movies} onChangeStar={hangleRatedFilm} />
-      <Pagination onChange={handleChangePagination} totalPages={totalPages} />
+      <div className="search-tab__header">
+        <SearchPanel onSearch={onSearch} />
+      </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="search-tab__main">
+          <CardList movies={movies} onChangeStar={hangleRatedFilm} />
+          <Pagination onChange={handleChangePagination} totalPages={totalPages} />
+        </div>
+      )}
     </div>
   );
 };
