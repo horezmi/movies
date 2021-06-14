@@ -1,42 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-import { SearchPanel, CardList, Pagination, Loader } from 'components';
-import { getRatedFilms, postRatedFilm } from 'helpers/Api';
-import { MoviesType } from 'types/interfaces';
+import { CardList, Loader } from 'components';
+import { postRatedFilm } from 'helpers/Api';
 
-const RatingTab = () => {
-  const [ratedMovies, setRatedMovies] = useState<MoviesType[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  const getRatedMovies = async () => {
-    const { results } = await getRatedFilms();
-    setRatedMovies(results);
-  };
-  useEffect(() => {
-    getRatedMovies();
-    setLoading(false);
-  }, []);
-
+const RatingTab = ({ ratedMovies }: any) => {
   const hangleRatedFilm = (movieId: number, rating: number) => {
     postRatedFilm({ movieId, rating });
   };
-  const onSearch = (value: string) => {
-    console.log('onSearch');
-  };
-  const handleChangePagination = (pageNumber: number) => {
-    console.log('onPagination');
-  };
+
   return (
     <div className="rating-tab">
-      <div className="rearch-tab__header">
-        <SearchPanel onSearch={onSearch} />
-      </div>
-      {loading ? (
+      {ratedMovies.length < 1 ? (
         <Loader />
       ) : (
         <div className="search-tab__main">
           <CardList movies={ratedMovies} onChangeStar={hangleRatedFilm} />
-          <Pagination onChange={handleChangePagination} totalPages={10} />
         </div>
       )}
     </div>

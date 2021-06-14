@@ -7,13 +7,14 @@ import { MoviesType } from 'types/interfaces';
 import 'antd/dist/antd.css';
 import './index.scss';
 
+const DEFAULT_SEARCH = 'return';
+
 const SearchTab = () => {
   const [movies, setMovies] = useState<MoviesType[]>([]);
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(true);
-  const [search, setSearch] = useState<string>('return');
-  // const [rated, setRated] = useState<any>({ movieId: 0, rating: 0 });
+  const [search, setSearch] = useState<string>(DEFAULT_SEARCH);
 
   const getMoviesData = async () => {
     const { total_results, results } = await getSearchedMovies(search, page);
@@ -23,6 +24,7 @@ const SearchTab = () => {
   };
 
   useEffect(() => {
+    setLoading(true);
     getMoviesData();
   }, [page, search]);
 
@@ -31,7 +33,7 @@ const SearchTab = () => {
   };
 
   const onSearch = (value: string) => {
-    if (value === '') value = 'return';
+    if (value === '') value = DEFAULT_SEARCH;
     setLoading(true);
     setSearch(value);
   };
@@ -39,6 +41,7 @@ const SearchTab = () => {
   const hangleRatedFilm = (movieId: number, rating: number) => {
     postRatedFilm({ movieId, rating });
   };
+
   return (
     <div className="search-tab">
       <div className="search-tab__header">
@@ -49,9 +52,9 @@ const SearchTab = () => {
       ) : (
         <div className="search-tab__main">
           <CardList movies={movies} onChangeStar={hangleRatedFilm} />
-          <Pagination onChange={handleChangePagination} totalPages={totalPages} />
         </div>
       )}
+      <Pagination onChange={handleChangePagination} current={page} totalPages={totalPages} />
     </div>
   );
 };
