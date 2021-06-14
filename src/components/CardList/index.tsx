@@ -12,7 +12,6 @@ const CardList = ({
   movies: MoviesType[];
   onChangeStar: any;
 }) => {
-  console.log(movies, 'movies');
   const cards = movies?.map((elem) => <Card key={elem.title + nanoid()} onChangeStar={onChangeStar} {...elem} />);
   return (
     <div className="card-list">

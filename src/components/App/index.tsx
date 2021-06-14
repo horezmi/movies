@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { SearchTab, RatingTab } from 'components';
 import { Tabs } from 'antd';
 
-import { getSearchedMovies, createGuestSession, postRatedFilm } from 'helpers/Api';
+import { createGuestSession } from 'helpers/Api';
 import { setLocalStorage, getLocalStorage } from 'helpers/LocalStorage';
-import { MoviesType } from 'types/interfaces';
 
 import 'antd/dist/antd.css';
 import './index.scss';
