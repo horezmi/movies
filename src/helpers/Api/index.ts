@@ -56,4 +56,9 @@ const getRatedFilms = async () => {
   return data;
 };
 
-export { fetchData, getSearchedMovies, createGuestSession, postRatedFilm, getRatedFilms, BASE_URL, API_KEY };
+const getGenres = async () => {
+  const data = await fetchData(`${BASE_URL}genre/movie/list?api_key=${API_KEY}`);
+  return data;
+};
+
+export { fetchData, getSearchedMovies, createGuestSession, postRatedFilm, getRatedFilms, getGenres, BASE_URL, API_KEY };

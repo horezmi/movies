@@ -44,10 +44,21 @@
       border: 5px green solid;
     }
 
-    &__date-genre {
+    &__date-genres {
       div {
         margin-bottom: 5px;
       }
+    }
+
+    &__genres {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    &__genre {
+      border: 1px yellowgreen solid;
+      margin-right: 0.2rem;
+      padding: 0.5rem;
     }
   }
 }

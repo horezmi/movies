@@ -1,13 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+
 import cn from 'classnames';
 import { Card as CardAntd, Rate } from 'antd';
+
+import moviesAppContext from 'helpers/Context';
 
 import { MoviesType } from 'types/interfaces';
 import './index.scss';
 
-const Card = ({ id, title, poster_path, vote_average, release_date, overview, onChangeStar, rating = 0 }: any) => {
+const Card = ({
+  id,
+  title,
+  poster_path,
+  vote_average,
+  release_date,
+  overview,
+  onChangeStar,
+  genre_ids,
+  rating = 0,
+}: any) => {
   const [srcImg, setSrcImg] = useState<string>(`https://image.tmdb.org/t/p/w500${poster_path}`);
   const [starValue, setStarValue] = useState<number>(rating);
+
+  const { genres } = useContext(moviesAppContext);
 
   const onErrorImg = () => {
     setSrcImg('https://www.wildhareboca.com/wp-content/uploads/sites/310/2018/03/image-not-available.jpg');
@@ -33,6 +48,15 @@ const Card = ({ id, title, poster_path, vote_average, release_date, overview, on
       onChangeStar(id, value);
     }
   };
+
+  console.log(genres, 'all genres');
+  console.log(genre_ids, 'card genres');
+
+  // const genresList = genres.map((elem) => (
+  //   <div className="card-info__genre" key={elem}>
+  //     {elem}
+  //   </div>
+  // ));
   return (
     <div className="card-wrap">
       <CardAntd bodyStyle={{ padding: 5, margin: 10 }}>
@@ -49,9 +73,9 @@ const Card = ({ id, title, poster_path, vote_average, release_date, overview, on
               </div>
             </div>
 
-            <div className="card-info__date-genre">
+            <div className="card-info__date-genres">
               <div className="card-info__date">{release_date}</div>
-              <div className="card-info__genre">Drama</div>
+              <div className="card-info__genres">{}</div>
             </div>
 
             <div className="card-info__description">
