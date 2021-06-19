@@ -59,7 +59,7 @@ const Card = ({ id, title, poster_path, vote_average, release_date, overview, on
             </div>
 
             <div className="card-info__rating-choose">
-              { starValue }
+              {starValue}
               <Rate
                 className="card-info__rating-choose_stars"
                 value={starValue}

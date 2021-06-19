@@ -10,7 +10,7 @@ const RatingTab = ({ ratedMovies }: any) => {
 
   return (
     <div className="rating-tab">
-      {ratedMovies.length < 1 ? (
+      {ratedMovies?.length < 1 ? (
         <Loader />
       ) : (
         <div className="search-tab__main">
