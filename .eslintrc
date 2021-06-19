@@ -47,5 +47,6 @@
       "react/no-array-index-key": "off",
       "default-case": "off",
       "react/require-default-props": "off",
+      "array-callback-return": "off",
     }
   }

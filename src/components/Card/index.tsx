@@ -49,14 +49,10 @@ const Card = ({
     }
   };
 
-  console.log(genres, 'all genres');
-  console.log(genre_ids, 'card genres');
+  const genresList = genre_ids.map(
+    (id : number) => genres[id] && <div className="card-info__genre" key={id}>{genres[id].name}</div>
+  );
 
-  // const genresList = genres.map((elem) => (
-  //   <div className="card-info__genre" key={elem}>
-  //     {elem}
-  //   </div>
-  // ));
   return (
     <div className="card-wrap">
       <CardAntd bodyStyle={{ padding: 5, margin: 10 }}>
@@ -75,7 +71,7 @@ const Card = ({
 
             <div className="card-info__date-genres">
               <div className="card-info__date">{release_date}</div>
-              <div className="card-info__genres">{}</div>
+              <div className="card-info__genres">{genresList}</div>
             </div>
 
             <div className="card-info__description">

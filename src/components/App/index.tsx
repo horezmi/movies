@@ -29,8 +29,8 @@ const App = () => {
   };
 
   const getMoviesGenres = async () => {
-    const data = await getGenres();
-    setGenres(data);
+    const { genres } = await getGenres();
+    setGenres(genres);
   };
 
   useEffect(() => {
