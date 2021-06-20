@@ -47,6 +47,7 @@ const SearchTab = () => {
       <div className="search-tab__header">
         <SearchPanel onSearch={onSearch} />
       </div>
+
       {loading ? (
         <Loader />
       ) : (
@@ -54,6 +55,7 @@ const SearchTab = () => {
           <CardList movies={movies} onChangeStar={hangleRatedFilm} />
         </div>
       )}
+
       <Pagination onChange={handleChangePagination} current={page} totalPages={totalPages} />
     </div>
   );

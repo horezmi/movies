@@ -1,12 +1,15 @@
-.cards {
+.card-list {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   flex-wrap: wrap;
+
+  .card-item {
+    flex: 1 0 50%;
+  }
 }
 
-@media (max-width: 1310px) {
-  .cards {
-    justify-content: center;
+@media (max-width: 1500px) {
+  .card-item {
+    flex: 1 0 100%;
   }
 }
