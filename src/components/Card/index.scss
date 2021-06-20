@@ -7,6 +7,8 @@
   width: 600px;
   height: 450px;
 
+  color: #0d0952;
+
   &-image {
     img {
       width: 250px;
@@ -35,16 +37,16 @@
       align-items: center;
     }
     .low {
-      border: 5px #E90000 solid;
+      border: 5px #e90000 solid;
     }
     .medium {
-      border: 5px #E97E00 solid;
+      border: 5px #e97e00 solid;
     }
     .good {
-      border: 5px #E9D100 solid;
+      border: 5px #e9d100 solid;
     }
     .great {
-      border: 5px #66E900 solid;
+      border: 5px #66e900 solid;
     }
 
     &__date-genres {
@@ -56,13 +58,16 @@
     &__genres {
       display: flex;
       justify-content: flex-start;
+      padding: 0.15rem 0;
     }
 
     &__genre {
-      border: 1px yellowgreen solid;
       margin-right: 0.2rem;
       padding: 0.35rem;
       font-size: 0.6rem;
+
+      border: 0.05rem #08008a solid;
+      background-color: #53e1fe;
     }
   }
 }
