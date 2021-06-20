@@ -49,9 +49,22 @@ const Card = ({
     }
   };
 
-  const genresList = genre_ids.map(
-    (id : number) => genres[id] && <div className="card-info__genre" key={id}>{genres[id].name}</div>
-  );
+  console.log(genres);
+  console.log(genre_ids);
+
+  const genresList = genre_ids.map((id: number) => {
+    let genre;
+    for (let i = 0; i < genres.length; i++) {
+      if (genres[i].id === id) {
+        genre = (
+          <div className="card-info__genre" key={id}>
+            {genres[i].name}
+          </div>
+        );
+      }
+    }
+    return genre;
+  });
 
   return (
     <div className="card-wrap">
