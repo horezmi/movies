@@ -1,6 +1,6 @@
 Movies Application using React.js and TypeScript
 
-React, TypeScript, Hooks, Context, LocalStorage, nanoid, debounce
+React, TypeScript, Hooks, Context, LocalStorage, nanoid, debounce, movieDB
 
 Ant Design, Scss, classnames
 
