@@ -3,6 +3,8 @@ import React from 'react';
 import { CardList, Loader } from 'components';
 import { postRatedFilm } from 'helpers/Api';
 
+import './index.scss';
+
 const RatingTab = ({ ratedMovies }: any) => {
   const hangleRatedFilm = (movieId: number, rating: number) => {
     postRatedFilm({ movieId, rating });
@@ -13,7 +15,7 @@ const RatingTab = ({ ratedMovies }: any) => {
       {ratedMovies?.length < 1 ? (
         <Loader />
       ) : (
-        <div className="search-tab__main">
+        <div className="rating-tab__main">
           <CardList movies={ratedMovies} onChangeStar={hangleRatedFilm} />
         </div>
       )}

@@ -50,7 +50,7 @@ const App = () => {
     <moviesAppContext.Provider value={{ genres }}>
       <div className="app">
         <Tabs
-          tabBarStyle={{ width: '130px', margin: '0 auto' }}
+          tabBarStyle={{ width: '130px', margin: '0 auto', fontSize: '20px' }}
           onChange={handleChangeTab}
           defaultActiveKey="1"
           size="large"

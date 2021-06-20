@@ -49,9 +49,6 @@ const Card = ({
     }
   };
 
-  console.log(genres);
-  console.log(genre_ids);
-
   const genresList = genre_ids.map((id: number) => {
     let genre;
     for (let i = 0; i < genres.length; i++) {
@@ -92,7 +89,6 @@ const Card = ({
             </div>
 
             <div className="card-info__rating-choose">
-              {starValue}
               <Rate
                 className="card-info__rating-choose_stars"
                 value={starValue}
