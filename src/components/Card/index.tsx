@@ -69,7 +69,7 @@ const Card = ({
       <CardAntd bodyStyle={{ padding: 5, margin: 10 }}>
         <div className="card">
           <div className="card-image">
-            <img src={srcImg} alt={title} onError={onErrorImg} />
+            <img className="card-image__poster" src={srcImg} alt={title} onError={onErrorImg} />
           </div>
 
           <div className="card-info">
