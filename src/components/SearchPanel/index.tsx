@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Input } from 'antd';
 
+import debounce from 'helpers/Debounce';
+
 import './index.scss';
+
+let onSearchDebounce : Function;
 
 const SearchPanel = ({ onSearch }: any) => {
   const [value, setValue] = useState<string>('');
 
+  useEffect(() => {
+    onSearchDebounce = debounce(onSearch, 1000);
+  }, []);
+
   const onChange = ({ target: { value } }: any) => {
     setValue(value);
-    onSearch(value);
+    onSearchDebounce(value);
   };
   return (
     <div className="search-panel">
