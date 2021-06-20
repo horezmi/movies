@@ -34,14 +34,17 @@
       justify-content: center;
       align-items: center;
     }
-    .red {
-      border: 5px red solid;
+    .low {
+      border: 5px #E90000 solid;
     }
-    .yellow {
-      border: 5px yellow solid;
+    .medium {
+      border: 5px #E97E00 solid;
     }
-    .green {
-      border: 5px green solid;
+    .good {
+      border: 5px #E9D100 solid;
+    }
+    .great {
+      border: 5px #66E900 solid;
     }
 
     &__date-genres {
@@ -58,7 +61,8 @@
     &__genre {
       border: 1px yellowgreen solid;
       margin-right: 0.2rem;
-      padding: 0.5rem;
+      padding: 0.35rem;
+      font-size: 0.6rem;
     }
   }
 }

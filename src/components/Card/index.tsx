@@ -38,9 +38,10 @@ const Card = ({
   };
   const circleClasses = cn({
     'card-info__rating-circle': true,
-    red: vote_average < 5,
-    yellow: vote_average >= 5 && vote_average < 7.5,
-    green: vote_average >= 7.5,
+    low: vote_average >= 0 && vote_average <= 3,
+    medium: vote_average > 3 && vote_average <= 5,
+    good: vote_average > 5 && vote_average <= 7,
+    great: vote_average > 7,
   });
   const handleChangeStar = (value: number) => {
     if (value > 0) {
