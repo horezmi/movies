@@ -1,4 +1,11 @@
 .app {
   margin: 0 auto;
-  max-width: 1400px;
+
+  max-width: 80rem;
+}
+
+@media (max-width: 1310px) {
+  .app {
+    max-width: 35rem;
+  }
 }

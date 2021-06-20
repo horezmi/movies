@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Input } from 'antd';
 
+import './index.scss';
+
 const SearchPanel = ({ onSearch }: any) => {
   const [value, setValue] = useState<string>('');
 
