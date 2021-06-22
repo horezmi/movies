@@ -4,12 +4,12 @@
   flex-wrap: wrap;
 
   .card-item {
-    flex: 1 0 50%;
+    flex: 1 0 45%;
   }
 }
 
-@media (max-width: 1500px) {
-  .card-item {
-    flex: 1 0 100%;
+@media (max-width: 1450px) {
+  .card-list {
+    justify-content: center;
   }
 }

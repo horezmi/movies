@@ -1,9 +1,10 @@
 .card-wrap {
   padding: 0.5rem;
-  
+  width: 45rem;
+
   .card {
     display: flex;
-    height: 29rem;
+    min-height: 29rem;
     color: #0d0952;
 
     &-image {
@@ -20,7 +21,7 @@
         justify-content: space-between;
 
         &_title {
-          width: 15rem;
+          max-width: 15rem;
         }
       }
       &__rating-circle {
@@ -67,7 +68,57 @@
   }
 }
 
-@media (max-width: 1310px) {
-  .card {
+@media (max-width: 1450px) {
+  .card-wrap {
+    width: 100%;
+  }
+}
+
+@media (max-width: 650px) {
+  .card-wrap {
+    .card {
+      font-size: 0.95rem;
+      &-image {
+        &__poster {
+          max-width: 10rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .card-wrap {
+    .card {
+      min-height: 19rem;
+      font-size: 0.7rem;
+      &-image {
+        &__poster {
+          max-width: 7rem;
+        }
+      }
+      &-info {
+        &__rating-circle {
+          min-width: 0.5rem;
+          min-height: 0.5rem;
+          border-radius: 50%;
+        }
+        &__genres {
+          display: flex;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+          padding: 0.1rem;
+        }
+        &__genre {
+          margin: 0.1rem;
+        }
+        &__rating-choose {
+          max-width: auto;
+          .ant-rate-star {
+            font-size: 0.6rem;
+          }
+        }
+      }
+    }
   }
 }
