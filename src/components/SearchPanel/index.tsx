@@ -7,7 +7,7 @@ import './index.scss';
 
 let onSearchDebounce : Function;
 
-const SearchPanel = ({ onSearch }: any) => {
+const SearchPanel = ({ onSearch }: any): JSX.Element => {
   const [value, setValue] = useState<string>('');
 
   useEffect(() => {

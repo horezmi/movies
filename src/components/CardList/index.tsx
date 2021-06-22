@@ -5,15 +5,11 @@ import { MoviesType } from 'types/interfaces';
 
 import './index.scss';
 
-const CardList = ({ movies = [], onChangeStar }: { movies: MoviesType[]; onChangeStar: any }) => {
+const CardList = ({ movies = [], onChangeStar }: { movies: MoviesType[]; onChangeStar: any }): JSX.Element => {
   const cards = movies?.map((elem) => (
     <Card className="card-item" key={elem.title + nanoid()} onChangeStar={onChangeStar} {...elem} />
   ));
-  return (
-    <div className="card-list">
-      {cards}
-    </div>
-  );
+  return <div className="card-list">{cards}</div>;
 };
 
 export default CardList;

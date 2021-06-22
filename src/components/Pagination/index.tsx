@@ -4,7 +4,7 @@ import { Pagination as PaginationAntd } from 'antd';
 
 import './index.scss';
 
-const Pagination = ({ onChange, totalPages }: any) => {
+const Pagination = ({ onChange, totalPages }: any): JSX.Element => {
   const handleChange = (pageNumber: number) => onChange(pageNumber);
   return (
     <div className="pagination">

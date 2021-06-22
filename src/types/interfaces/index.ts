@@ -10,3 +10,8 @@ export interface GenresType {
   id: number;
   name: string;
 }
+
+export interface RatedFilmType {
+  movieId: number,
+  rating: number,
+}

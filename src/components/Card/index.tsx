@@ -18,7 +18,7 @@ const Card = ({
   onChangeStar,
   genre_ids,
   rating = 0,
-}: any) => {
+}: any): JSX.Element => {
   const [srcImg, setSrcImg] = useState<string>(`https://image.tmdb.org/t/p/w500${poster_path}`);
   const [starValue, setStarValue] = useState<number>(rating);
 

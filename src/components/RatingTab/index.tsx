@@ -5,7 +5,7 @@ import { postRatedFilm } from 'helpers/Api';
 
 import './index.scss';
 
-const RatingTab = ({ ratedMovies }: any) => {
+const RatingTab = ({ ratedMovies }: any): JSX.Element => {
   const hangleRatedFilm = (movieId: number, rating: number) => {
     postRatedFilm({ movieId, rating });
   };

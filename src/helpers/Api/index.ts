@@ -1,9 +1,9 @@
 import { getLocalStorage } from 'helpers/LocalStorage';
-import { MoviesType, GenresType } from 'types/interfaces';
+import { RatedFilmType } from 'types/interfaces';
 
-const BASE_URL = 'https://api.themoviedb.org/3/';
-const API_KEY = 'c44b5b2b9ec7f5830a7641106c455833';
-const sessionId = getLocalStorage('sessionId');
+const BASE_URL: string = 'https://api.themoviedb.org/3/';
+const API_KEY: string = 'c44b5b2b9ec7f5830a7641106c455833';
+const sessionId: string = getLocalStorage('sessionId');
 
 const fetchData = async (url: string, value: object = {}) => {
   if (!value) {
@@ -41,7 +41,7 @@ const createGuestSession = async () => {
   return data;
 };
 
-const postRatedFilm = async ({ movieId, rating }: any) => {
+const postRatedFilm = async ({ movieId, rating }: RatedFilmType) => {
   const data = await fetchData(`${BASE_URL}movie/${movieId}/rating?api_key=${API_KEY}&guest_session_id=${sessionId}`, {
     method: 'POST',
     headers: {

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { SearchTab, RatingTab } from 'components';
 
 import { Tabs } from 'antd';
-import { MoviesType, GenresType } from 'types/interfaces';
+import { SearchTab, RatingTab } from 'components';
 
 import moviesAppContext from 'helpers/Context';
-
 import { createGuestSession, getGenres, getRatedFilms } from 'helpers/Api';
 import { setLocalStorage, getLocalStorage } from 'helpers/LocalStorage';
+
+import { MoviesType, GenresType } from 'types/interfaces';
 
 import 'antd/dist/antd.css';
 import './index.scss';
@@ -22,24 +22,20 @@ const App = () => {
     setLocalStorage('sessionId', guest_session_id);
     setSessionId(guest_session_id);
   };
-
   const getRatedMovies: Function = async () => {
     const { results } = await getRatedFilms();
     setRatedMovies(results);
   };
-
   const getMoviesGenres: Function = async () => {
     const { genres } = await getGenres();
     setGenres(genres);
   };
-
   useEffect(() => {
     if (!sessionId) {
       getSessionData();
     }
     getMoviesGenres();
   }, []);
-
   const handleChangeTab = (activeTab: string) => {
     if (activeTab === 'ratingTab') getRatedMovies();
   };
