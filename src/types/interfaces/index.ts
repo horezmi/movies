@@ -1,9 +1,11 @@
 export interface MoviesType {
+  id: number;
   title: string;
   poster_path: string;
   overview: string;
   release_date: string;
   vote_average: number;
+  rating?: number;
 }
 
 export interface GenresType {
@@ -14,4 +16,8 @@ export interface GenresType {
 export interface RatedFilmType {
   movieId: number,
   rating: number,
+}
+
+export interface RatingTabPropsType {
+  ratedMovies: MoviesType[],
 }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { SearchPanel, CardList, Pagination, Loader } from 'components';
-
 import { getSearchedMovies, postRatedFilm } from 'helpers/Api';
 import { MoviesType } from 'types/interfaces';
 
@@ -16,7 +15,7 @@ const SearchTab = (): JSX.Element => {
   const [loading, setLoading] = useState<boolean>(true);
   const [search, setSearch] = useState<string>(DEFAULT_SEARCH);
 
-  const getMoviesData = async () => {
+  const getMoviesData: Function = async () => {
     const { total_results, results } = await getSearchedMovies(search, page);
     setTotalPages(total_results);
     setMovies(results);
@@ -28,17 +27,17 @@ const SearchTab = (): JSX.Element => {
     getMoviesData();
   }, [page, search]);
 
-  const handleChangePagination = (pageNumber: number) => {
+  const handleChangePagination: Function = (pageNumber: number) => {
     setPage(pageNumber);
   };
 
-  const onSearch = (value: string) => {
+  const onSearch: Function = (value: string) => {
     if (value === '') value = DEFAULT_SEARCH;
     setLoading(true);
     setSearch(value);
   };
 
-  const hangleRatedFilm = (movieId: number, rating: number) => {
+  const hangleRatedFilm: Function = (movieId: number, rating: number) => {
     postRatedFilm({ movieId, rating });
   };
 

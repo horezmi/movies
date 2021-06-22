@@ -5,7 +5,7 @@ import { Card as CardAntd, Rate } from 'antd';
 
 import moviesAppContext from 'helpers/Context';
 
-import { MoviesType } from 'types/interfaces';
+import { MoviesType, GenresType } from 'types/interfaces';
 import './index.scss';
 
 const Card = ({
@@ -50,7 +50,7 @@ const Card = ({
     }
   };
 
-  const genresList = genre_ids.map((id: number) => {
+  const genresList: GenresType[] = genre_ids.map((id: number) => {
     let genre;
     for (let i = 0; i < genres.length; i++) {
       if (genres[i].id === id) {
@@ -71,7 +71,6 @@ const Card = ({
           <div className="card-image">
             <img className="card-image__poster" src={srcImg} alt={title} onError={onErrorImg} />
           </div>
-
           <div className="card-info">
             <div className="card-info__header">
               <h2 className="card-info__header_title">{title}</h2>
@@ -79,16 +78,13 @@ const Card = ({
                 <span>{vote_average}</span>
               </div>
             </div>
-
             <div className="card-info__date-genres">
               <div className="card-info__date">{release_date}</div>
               <div className="card-info__genres">{genresList}</div>
             </div>
-
             <div className="card-info__description">
               <p>{cutText(overview)}</p>
             </div>
-
             <div className="card-info__rating-choose">
               <Rate
                 className="card-info__rating-choose_stars"
