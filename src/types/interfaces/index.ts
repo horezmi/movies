@@ -43,3 +43,9 @@ export interface CardPropsType {
   genre_ids?: any;
   className: string;
 }
+
+export interface PaginationPropsType {
+  onChange: (pageNumber: number) => any;
+  totalPages: number;
+  currentPage: number;
+}

@@ -51,7 +51,7 @@ const SearchTab: React.FC = (): JSX.Element => {
         </div>
       )}
 
-      <Pagination onChange={handleChangePagination} current={page} totalPages={totalPages} />
+      <Pagination onChange={handleChangePagination} currentPage={page} totalPages={totalPages} />
     </div>
   );
 };
