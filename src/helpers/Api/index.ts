@@ -1,4 +1,5 @@
 import { getLocalStorage } from 'helpers/LocalStorage';
+import { MoviesType, GenresType } from 'types/interfaces';
 
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = 'c44b5b2b9ec7f5830a7641106c455833';

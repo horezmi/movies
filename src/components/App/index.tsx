@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { SearchTab, RatingTab } from 'components';
 
 import { Tabs } from 'antd';
-import { MoviesType } from 'types/interfaces';
+import { MoviesType, GenresType } from 'types/interfaces';
 
 import moviesAppContext from 'helpers/Context';
 
@@ -15,20 +15,20 @@ import './index.scss';
 const App = () => {
   const [sessionId, setSessionId] = useState<string>(getLocalStorage('sessionId') || '');
   const [ratedMovies, setRatedMovies] = useState<MoviesType[]>([]);
-  const [genres, setGenres] = useState([]);
+  const [genres, setGenres] = useState<GenresType[]>([]);
 
-  const getSessionData = async () => {
+  const getSessionData: Function = async () => {
     const { guest_session_id } = await createGuestSession();
     setLocalStorage('sessionId', guest_session_id);
     setSessionId(guest_session_id);
   };
 
-  const getRatedMovies = async () => {
+  const getRatedMovies: Function = async () => {
     const { results } = await getRatedFilms();
     setRatedMovies(results);
   };
 
-  const getMoviesGenres = async () => {
+  const getMoviesGenres: Function = async () => {
     const { genres } = await getGenres();
     setGenres(genres);
   };

@@ -5,3 +5,8 @@ export interface MoviesType {
   release_date: string;
   vote_average: number;
 }
+
+export interface GenresType {
+  id: number;
+  name: string;
+}
