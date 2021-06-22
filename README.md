@@ -1,8 +1,8 @@
 Movies Application using React.js and TypeScript
 
-React, TypeScript
+React, TypeScript, Hooks, Context, LocalStorage, nanoid, debounce, movieDB
 
-Ant Design, Scss
+Ant Design, Scss, classnames
 
 Eslint, prettier, husky, lint-staged
 
