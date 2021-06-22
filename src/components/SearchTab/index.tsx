@@ -42,7 +42,6 @@ const SearchTab: React.FC = (): JSX.Element => {
       <div className="search-tab__header">
         <SearchPanel onSearch={onSearch} />
       </div>
-
       {loading ? (
         <Loader />
       ) : (
@@ -50,7 +49,6 @@ const SearchTab: React.FC = (): JSX.Element => {
           <CardList movies={movies} onChangeStar={hangleRatedFilm} />
         </div>
       )}
-
       <Pagination onChange={handleChangePagination} currentPage={page} totalPages={totalPages} />
     </div>
   );

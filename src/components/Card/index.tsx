@@ -48,7 +48,6 @@ const Card = ({
       onChangeStar(id, value);
     }
   };
-
   const genresList: GenresType[] = genre_ids.map((id: number) => {
     let genre;
     for (let i = 0; i < genres.length; i++) {
