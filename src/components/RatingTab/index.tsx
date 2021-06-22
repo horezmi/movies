@@ -10,14 +10,22 @@ const RatingTab = ({ ratedMovies }: any) => {
     postRatedFilm({ movieId, rating });
   };
 
+  let content;
+  if (ratedMovies?.length === 0) content = <h1>no movies</h1>;
+  else {
+    content = (
+      <div className="rating-tab__main">
+        <CardList movies={ratedMovies} onChangeStar={hangleRatedFilm} />
+      </div>
+    );
+  }
+
   return (
     <div className="rating-tab">
-      {ratedMovies?.length < 1 ? (
-        <Loader />
+      {ratedMovies ? (
+        content
       ) : (
-        <div className="rating-tab__main">
-          <CardList movies={ratedMovies} onChangeStar={hangleRatedFilm} />
-        </div>
+        <Loader />
       )}
     </div>
   );

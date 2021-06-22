@@ -48,6 +48,7 @@
       "default-case": "off",
       "react/require-default-props": "off",
       "array-callback-return": "off",
-      "no-plusplus": "off"
+      "no-plusplus": "off",
+      "no-nested-ternary": "off",
     }
   }
