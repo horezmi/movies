@@ -21,3 +21,7 @@ export interface RatedFilmType {
 export interface RatingTabPropsType {
   ratedMovies: MoviesType[],
 }
+
+export interface SearchPanelPropsType {
+  onSearch: (value: string) => any,
+}

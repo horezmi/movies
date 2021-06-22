@@ -15,29 +15,25 @@ const SearchTab = (): JSX.Element => {
   const [loading, setLoading] = useState<boolean>(true);
   const [search, setSearch] = useState<string>(DEFAULT_SEARCH);
 
-  const getMoviesData: Function = async () => {
+  const getMoviesData = async () => {
     const { total_results, results } = await getSearchedMovies(search, page);
     setTotalPages(total_results);
     setMovies(results);
     setLoading(false);
   };
-
   useEffect(() => {
     setLoading(true);
     getMoviesData();
   }, [page, search]);
-
-  const handleChangePagination: Function = (pageNumber: number) => {
+  const handleChangePagination = (pageNumber: number) => {
     setPage(pageNumber);
   };
-
-  const onSearch: Function = (value: string) => {
+  const onSearch = (value: string) => {
     if (value === '') value = DEFAULT_SEARCH;
     setLoading(true);
     setSearch(value);
   };
-
-  const hangleRatedFilm: Function = (movieId: number, rating: number) => {
+  const hangleRatedFilm = (movieId: number, rating: number) => {
     postRatedFilm({ movieId, rating });
   };
 

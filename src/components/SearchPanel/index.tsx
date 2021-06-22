@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Input } from 'antd';
+import { SearchPanelPropsType } from 'types/interfaces';
 
 import debounce from 'helpers/Debounce';
 
 import './index.scss';
 
-let onSearchDebounce : Function;
+let onSearchDebounce: Function;
 
-const SearchPanel = ({ onSearch }: any): JSX.Element => {
+const SearchPanel = ({ onSearch }: SearchPanelPropsType): JSX.Element => {
   const [value, setValue] = useState<string>('');
 
   useEffect(() => {
