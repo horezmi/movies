@@ -12,7 +12,7 @@ import { MoviesType, GenresType } from 'types/interfaces';
 import 'antd/dist/antd.css';
 import './index.scss';
 
-const App = () => {
+const App: React.FC = (): JSX.Element => {
   const [sessionId, setSessionId] = useState<string>(getLocalStorage('sessionId') || '');
   const [ratedMovies, setRatedMovies] = useState<MoviesType[]>([]);
   const [genres, setGenres] = useState<GenresType[]>([]);

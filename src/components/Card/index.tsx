@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Card as CardAntd, Rate } from 'antd';
+import moviesAppContext from 'helpers/Context';
+import { MoviesType, GenresType, CardPropsType } from 'types/interfaces';
 
 import cn from 'classnames';
-import { Card as CardAntd, Rate } from 'antd';
 
-import moviesAppContext from 'helpers/Context';
-
-import { MoviesType, GenresType } from 'types/interfaces';
 import './index.scss';
 
 const Card = ({
@@ -18,7 +17,7 @@ const Card = ({
   onChangeStar,
   genre_ids,
   rating = 0,
-}: any): JSX.Element => {
+}: CardPropsType): JSX.Element => {
   const [srcImg, setSrcImg] = useState<string>(`https://image.tmdb.org/t/p/w500${poster_path}`);
   const [starValue, setStarValue] = useState<number>(rating);
 

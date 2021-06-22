@@ -8,7 +8,7 @@ import './index.scss';
 
 const DEFAULT_SEARCH = 'return';
 
-const SearchTab = (): JSX.Element => {
+const SearchTab: React.FC = (): JSX.Element => {
   const [movies, setMovies] = useState<MoviesType[]>([]);
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
