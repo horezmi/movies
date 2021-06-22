@@ -1,2 +1,7 @@
 .rating-tab {
+  &__no-movies {
+    border: 2px blue solid;
+    text-align: center;
+    margin: 1rem;
+  }
 }

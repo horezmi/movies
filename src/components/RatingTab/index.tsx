@@ -11,8 +11,9 @@ const RatingTab = ({ ratedMovies }: any) => {
   };
 
   let content;
-  if (ratedMovies?.length === 0) content = <h1>no movies</h1>;
-  else {
+  if (ratedMovies?.length === 0) {
+    content = <div className="rating-tab__no-movies"><h1>No movies</h1></div>;
+  } else {
     content = (
       <div className="rating-tab__main">
         <CardList movies={ratedMovies} onChangeStar={hangleRatedFilm} />
@@ -20,15 +21,7 @@ const RatingTab = ({ ratedMovies }: any) => {
     );
   }
 
-  return (
-    <div className="rating-tab">
-      {ratedMovies ? (
-        content
-      ) : (
-        <Loader />
-      )}
-    </div>
-  );
+  return <div className="rating-tab">{ratedMovies ? content : <Loader />}</div>;
 };
 
 export default RatingTab;
