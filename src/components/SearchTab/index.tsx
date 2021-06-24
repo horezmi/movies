@@ -27,10 +27,12 @@ const SearchTab: React.FC = (): JSX.Element => {
     setMovies(results);
     setLoading(false);
   };
+
   useEffect(() => {
     setLoading(true);
     getMoviesData();
   }, [page, search]);
+
   const handleChangePagination = (pageNumber: number) => {
     setPage(pageNumber);
   };

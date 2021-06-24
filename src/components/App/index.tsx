@@ -46,12 +46,14 @@ const App: React.FC = (): JSX.Element => {
     const { genres } = data;
     setGenres(genres);
   };
+
   useEffect(() => {
     if (!sessionId) {
       getSessionData();
     }
     getMoviesGenres();
   }, []);
+
   const handleChangeTab = (activeTab: string) => {
     if (activeTab === 'ratingTab') getRatedMovies();
   };

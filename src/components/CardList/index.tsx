@@ -1,7 +1,7 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 import { Card } from 'components';
-import { MoviesType, CardListPropsType } from 'types/interfaces';
+import { CardListPropsType } from 'types/interfaces';
 
 import './index.scss';
 

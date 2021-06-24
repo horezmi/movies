@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Card as CardAntd, Rate } from 'antd';
 import moviesAppContext from 'helpers/Context';
-import { MoviesType, GenresType, CardPropsType } from 'types/interfaces';
+import { GenresType, CardPropsType } from 'types/interfaces';
+
+import cutText from 'helpers/CutText';
 
 import cn from 'classnames';
-
 import './index.scss';
 
 const Card = ({
@@ -25,15 +26,6 @@ const Card = ({
 
   const onErrorImg = () => {
     setSrcImg('https://www.wildhareboca.com/wp-content/uploads/sites/310/2018/03/image-not-available.jpg');
-  };
-  const cutText = (text: string) => {
-    if (text.length > 550) {
-      const cated = text.substring(0, 550);
-      const idx = cated.lastIndexOf('.');
-      const result = text.substring(0, idx + 1);
-      return result;
-    }
-    return text;
   };
   const circleClasses = cn({
     'card-info__rating-circle': true,

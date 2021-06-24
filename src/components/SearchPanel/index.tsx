@@ -14,6 +14,7 @@ const SearchPanel = ({ onSearch }: SearchPanelPropsType): JSX.Element => {
   useEffect(() => {
     onSearchDebounce = debounce(onSearch, 1000);
   }, []);
+
   const onChange = ({ target: { value } }: any) => {
     setValue(value);
     onSearchDebounce(value);
