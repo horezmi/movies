@@ -10,18 +10,18 @@ const fetchData = async (url: string, value: object = {}) => {
     try {
       const response = await fetch(url);
       if (!response.ok) {
-        return true;
+        return false;
       }
       const data = await response.json();
       return data;
     } catch (e) {
-      return true;
+      return false;
     }
   } else {
     try {
       const response = await fetch(url, value);
       if (!response.ok) {
-        return true;
+        return false;
       }
       const data = await response.json();
       return data;

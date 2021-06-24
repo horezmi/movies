@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SearchPanel, CardList, Pagination, Loader } from 'components';
+import { SearchPanel, CardList, Pagination, Loader, Error } from 'components';
 import { getSearchedMovies, postRatedFilm } from 'helpers/Api';
 import { MoviesType } from 'types/interfaces';
 
@@ -14,9 +14,15 @@ const SearchTab: React.FC = (): JSX.Element => {
   const [totalPages, setTotalPages] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(true);
   const [search, setSearch] = useState<string>(DEFAULT_SEARCH);
+  const [error, setError] = useState<boolean>(false);
 
   const getMoviesData = async () => {
-    const { total_results, results } = await getSearchedMovies(search, page);
+    const data = await getSearchedMovies(search, page);
+    if (!data) {
+      setError(true);
+      return;
+    }
+    const { total_results, results } = data;
     setTotalPages(total_results);
     setMovies(results);
     setLoading(false);
@@ -33,9 +39,12 @@ const SearchTab: React.FC = (): JSX.Element => {
     setLoading(true);
     setSearch(value);
   };
-  const hangleRatedFilm = (movieId: number, rating: number) => {
-    postRatedFilm({ movieId, rating });
+  const hangleRatedFilm = async (movieId: number, rating: number) => {
+    const data = await postRatedFilm({ movieId, rating });
+    if (!data) setError(true);
   };
+
+  if (error) return <Error />;
 
   return (
     <div className="search-tab">

@@ -16,18 +16,34 @@ const App: React.FC = (): JSX.Element => {
   const [sessionId, setSessionId] = useState<string>(getLocalStorage('sessionId') || '');
   const [ratedMovies, setRatedMovies] = useState<MoviesType[]>([]);
   const [genres, setGenres] = useState<GenresType[]>([]);
+  const [error, setError] = useState<boolean>(false);
 
   const getSessionData: Function = async () => {
-    const { guest_session_id } = await createGuestSession();
+    const data = await createGuestSession();
+    if (!data) {
+      setError(true);
+      return;
+    }
+    const { guest_session_id } = data;
     setLocalStorage('sessionId', guest_session_id);
     setSessionId(guest_session_id);
   };
   const getRatedMovies: Function = async () => {
-    const { results } = await getRatedFilms();
+    const data = await getRatedFilms();
+    if (!data) {
+      setError(true);
+      return;
+    }
+    const { results } = data;
     setRatedMovies(results);
   };
   const getMoviesGenres: Function = async () => {
-    const { genres } = await getGenres();
+    const data = await getGenres();
+    if (!data) {
+      setError(true);
+      return;
+    }
+    const { genres } = data;
     setGenres(genres);
   };
   useEffect(() => {
@@ -42,8 +58,7 @@ const App: React.FC = (): JSX.Element => {
 
   const { TabPane } = Tabs;
 
-  const a = 1;
-  if (a) return <Error />;
+  if (error) return <Error />;
 
   return (
     <moviesAppContext.Provider value={{ genres }}>

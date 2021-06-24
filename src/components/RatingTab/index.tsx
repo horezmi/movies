@@ -1,13 +1,16 @@
-import React from 'react';
-import { CardList, Loader } from 'components';
+import React, { useState } from 'react';
+import { CardList, Loader, Error } from 'components';
 import { postRatedFilm } from 'helpers/Api';
 import { RatingTabPropsType } from 'types/interfaces';
 
 import './index.scss';
 
 const RatingTab = ({ ratedMovies }: RatingTabPropsType): JSX.Element => {
-  const hangleRatedFilm = (movieId: number, rating: number) => {
-    postRatedFilm({ movieId, rating });
+  const [error, setError] = useState<boolean>(false);
+
+  const hangleRatedFilm = async (movieId: number, rating: number) => {
+    const data = await postRatedFilm({ movieId, rating });
+    if (!data) setError(true);
   };
 
   let content;
@@ -24,6 +27,8 @@ const RatingTab = ({ ratedMovies }: RatingTabPropsType): JSX.Element => {
       </div>
     );
   }
+
+  if (error) return <Error />;
 
   return <div className="rating-tab">{ratedMovies ? content : <Loader />}</div>;
 };
