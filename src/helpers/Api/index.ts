@@ -26,7 +26,7 @@ const fetchData = async (url: string, value: object = {}) => {
       const data = await response.json();
       return data;
     } catch (e) {
-      return true;
+      return false;
     }
   }
 };

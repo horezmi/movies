@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { Tabs } from 'antd';
-import { SearchTab, RatingTab } from 'components';
+import { SearchTab, RatingTab, Error } from 'components';
 
 import moviesAppContext from 'helpers/Context';
 import { createGuestSession, getGenres, getRatedFilms } from 'helpers/Api';
@@ -41,6 +41,9 @@ const App: React.FC = (): JSX.Element => {
   };
 
   const { TabPane } = Tabs;
+
+  const a = 1;
+  if (a) return <Error />;
 
   return (
     <moviesAppContext.Provider value={{ genres }}>
