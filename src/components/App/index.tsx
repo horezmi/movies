@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect } from 'react';
+import React, { memo, useState, useEffect, useCallback } from 'react';
 
 import { Tabs } from 'antd';
 import { SearchTab, RatingTab, Error } from 'components';
@@ -54,9 +54,9 @@ const App: React.FC = (): JSX.Element => {
     getMoviesGenres();
   }, []);
 
-  const handleChangeTab = (activeTab: string) => {
+  const handleChangeTab = useCallback((activeTab: string) => {
     if (activeTab === 'ratingTab') getRatedMovies();
-  };
+  }, [ratedMovies]);
 
   const { TabPane } = Tabs;
 
