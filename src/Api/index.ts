@@ -1,4 +1,4 @@
-import { getLocalStorage } from 'helpers/LocalStorage';
+import { getLocalStorage } from 'helpers/Functions/LocalStorage';
 import { RatedFilmType } from 'types/interfaces';
 
 const BASE_URL: string = 'https://api.themoviedb.org/3/';

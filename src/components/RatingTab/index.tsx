@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CardList, Loader, Error } from 'components';
-import { postRatedFilm } from 'helpers/Api';
+import { postRatedFilm } from 'Api';
 import { RatingTabPropsType } from 'types/interfaces';
 
 import './index.scss';

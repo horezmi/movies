@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { Tabs } from 'antd';
 import { SearchTab, RatingTab, Error } from 'components';
 
-import moviesAppContext from 'helpers/Context';
-import { createGuestSession, getGenres, getRatedFilms } from 'helpers/Api';
-import { setLocalStorage, getLocalStorage } from 'helpers/LocalStorage';
+import moviesAppContext from 'Context';
+import { createGuestSession, getGenres, getRatedFilms } from 'Api';
+import { setLocalStorage, getLocalStorage } from 'helpers/Functions/LocalStorage';
 
 import { MoviesType, GenresType } from 'types/interfaces';
 
