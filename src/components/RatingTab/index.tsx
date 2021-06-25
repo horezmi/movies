@@ -1,4 +1,4 @@
-import React, { memo, useState, useCallback } from 'react';
+import React, { memo, useState, useCallback, useMemo } from 'react';
 import { CardList, Loader, Error } from 'components';
 import { postRatedFilm } from 'api';
 import { RatingTabPropsType } from 'types/interfaces';
@@ -13,20 +13,15 @@ const RatingTab = ({ ratedMovies }: RatingTabPropsType): JSX.Element => {
     if (!data) setError(true);
   }, []);
 
-  let content;
-  if (ratedMovies?.length === 0) {
-    content = (
-      <div className="rating-tab__no-movies">
-        <h1>No movies</h1>
-      </div>
-    );
-  } else {
-    content = (
+  const content = useMemo(() => {
+    if (ratedMovies?.length === 0) return <div className="rating-tab__no-movies"><h1>No movies</h1></div>;
+
+    return (
       <div className="rating-tab__main">
         <CardList movies={ratedMovies} onChangeStar={hangleRatedFilm} />
       </div>
     );
-  }
+  }, [ratedMovies]);
 
   if (error) return <Error />;
 
