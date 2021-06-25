@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { Tabs } from 'antd';
 import { SearchTab, RatingTab, Error } from 'components';
 
-import moviesAppContext from 'Context';
-import { createGuestSession, getGenres, getRatedFilms } from 'Api';
+import moviesAppContext from 'context';
+import { createGuestSession, getGenres, getRatedFilms } from 'api';
 import { setLocalStorage, getLocalStorage } from 'helpers/Functions/LocalStorage';
 
 import { MoviesType, GenresType } from 'types/interfaces';

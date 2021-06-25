@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Card as CardAntd, Rate } from 'antd';
-import moviesAppContext from 'Context';
+import moviesAppContext from 'context';
 import { GenresType, CardPropsType } from 'types/interfaces';
 
 import cutText from 'helpers/Functions/CutText';

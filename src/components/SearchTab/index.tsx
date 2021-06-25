@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SearchPanel, CardList, Pagination, Loader, Error } from 'components';
-import { getSearchedMovies, postRatedFilm } from 'Api';
+import { getSearchedMovies, postRatedFilm } from 'api';
 import { MoviesType } from 'types/interfaces';
 
 import 'antd/dist/antd.css';
