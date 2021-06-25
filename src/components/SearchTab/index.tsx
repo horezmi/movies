@@ -36,7 +36,7 @@ const SearchTab: React.FC = (): JSX.Element => {
     (pageNumber: number) => {
       setPage(pageNumber);
     },
-    []
+    [page]
   );
 
   const onSearch = useCallback(
@@ -45,13 +45,13 @@ const SearchTab: React.FC = (): JSX.Element => {
       setLoading(true);
       setSearch(value);
     },
-    []
+    [search]
   );
 
   const hangleRatedFilm = useCallback(async (movieId: number, rating: number) => {
     const data = await postRatedFilm({ movieId, rating });
     if (!data) setError(true);
-  }, []);
+  }, [movies]);
 
   if (error) return <Error />;
 

@@ -11,7 +11,7 @@ const RatingTab = ({ ratedMovies }: RatingTabPropsType): JSX.Element => {
   const hangleRatedFilm = useCallback(async (movieId: number, rating: number) => {
     const data = await postRatedFilm({ movieId, rating });
     if (!data) setError(true);
-  }, []);
+  }, [ratedMovies]);
 
   const content = useMemo(() => {
     if (ratedMovies?.length === 0) return <div className="rating-tab__no-movies"><h1>No movies</h1></div>;

@@ -58,7 +58,7 @@ const App: React.FC = (): JSX.Element => {
 
   const handleChangeTab = useCallback((activeTab: string) => {
     if (activeTab === 'ratingTab') getRatedMovies();
-  }, []);
+  }, [ratedMovies]);
 
   if (error) return <Error />;
 

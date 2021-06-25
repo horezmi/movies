@@ -18,7 +18,7 @@ const SearchPanel = ({ onSearch }: SearchPanelPropsType): JSX.Element => {
   const onChange = useCallback(({ target: { value } }: any) => {
     setValue(value);
     onSearchDebounce(value);
-  }, []);
+  }, [value]);
 
   return (
     <div className="search-panel">

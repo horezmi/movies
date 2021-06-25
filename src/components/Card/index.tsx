@@ -27,7 +27,7 @@ const Card = ({
 
   const onErrorImg = useCallback(() => {
     setSrcImg(DEFAULT_IMAGE_URL);
-  }, []);
+  }, [srcImg]);
 
   const circleClasses = cn({
     'card-info__rating-circle': true,
@@ -42,7 +42,7 @@ const Card = ({
       setStarValue(value);
       onChangeStar(id, value);
     }
-  }, []);
+  }, [starValue]);
 
   const genresList: GenresType[] = useMemo(() => genre_ids.map((id: number) => {
     let genre;

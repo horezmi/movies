@@ -5,7 +5,7 @@ import { PaginationPropsType } from 'types/interfaces';
 import './index.scss';
 
 const Pagination = ({ onChange, totalPages, currentPage }: PaginationPropsType): JSX.Element => {
-  const handleChange = useCallback((pageNumber: number) => onChange(pageNumber), []);
+  const handleChange = useCallback((pageNumber: number) => onChange(pageNumber), [onChange]);
 
   return (
     <div className="pagination">
