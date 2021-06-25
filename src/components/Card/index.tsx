@@ -4,7 +4,7 @@ import moviesAppContext from 'context';
 import { GenresType, CardPropsType } from 'types/interfaces';
 import { IMAGE_URL, DEFAULT_IMAGE_URL } from 'constants/index';
 
-import cutText from 'helpers/Functions/CutText';
+import cutText from 'helpers/functions/cutText';
 
 import cn from 'classnames';
 import './index.scss';

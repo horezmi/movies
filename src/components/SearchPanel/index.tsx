@@ -2,7 +2,7 @@ import React, { memo, useState, useEffect, useCallback } from 'react';
 import { Input } from 'antd';
 import { SearchPanelPropsType } from 'types/interfaces';
 
-import debounce from 'helpers/Functions/Debounce';
+import debounce from 'helpers/functions/debounce';
 
 import './index.scss';
 

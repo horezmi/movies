@@ -5,7 +5,7 @@ import { SearchTab, RatingTab, Error } from 'components';
 
 import moviesAppContext from 'context';
 import { createGuestSession, getGenres, getRatedFilms } from 'api';
-import { setLocalStorage, getLocalStorage } from 'helpers/Functions/LocalStorage';
+import { setLocalStorage, getLocalStorage } from 'helpers/functions/localStorage';
 
 import { MoviesType, GenresType } from 'types/interfaces';
 
