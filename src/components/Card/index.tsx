@@ -1,4 +1,4 @@
-import React, { memo, useState, useContext } from 'react';
+import React, { memo, useState, useContext, useCallback } from 'react';
 import { Card as CardAntd, Rate } from 'antd';
 import moviesAppContext from 'context';
 import { GenresType, CardPropsType } from 'types/interfaces';
@@ -25,9 +25,10 @@ const Card = ({
 
   const { genres } = useContext(moviesAppContext);
 
-  const onErrorImg = () => {
+  const onErrorImg = useCallback(() => {
     setSrcImg(DEFAULT_IMAGE_URL);
-  };
+  }, []);
+
   const circleClasses = cn({
     'card-info__rating-circle': true,
     low: vote_average >= 0 && vote_average <= 3,
@@ -35,12 +36,14 @@ const Card = ({
     good: vote_average > 5 && vote_average <= 7,
     great: vote_average > 7,
   });
-  const handleChangeStar = (value: number) => {
+
+  const handleChangeStar = useCallback((value: number) => {
     if (value > 0) {
       setStarValue(value);
       onChangeStar(id, value);
     }
-  };
+  }, []);
+
   const genresList: GenresType[] = genre_ids.map((id: number) => {
     let genre;
     for (let i = 0; i < genres.length; i++) {

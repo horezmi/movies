@@ -56,7 +56,7 @@ const App: React.FC = (): JSX.Element => {
 
   const handleChangeTab = useCallback((activeTab: string) => {
     if (activeTab === 'ratingTab') getRatedMovies();
-  }, [ratedMovies]);
+  }, []);
 
   const { TabPane } = Tabs;
 

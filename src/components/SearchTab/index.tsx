@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect } from 'react';
+import React, { memo, useState, useEffect, useCallback } from 'react';
 import { SearchPanel, CardList, Pagination, Loader, Error } from 'components';
 import { getSearchedMovies, postRatedFilm } from 'api';
 import { MoviesType } from 'types/interfaces';
@@ -32,18 +32,26 @@ const SearchTab: React.FC = (): JSX.Element => {
     getMoviesData();
   }, [page, search]);
 
-  const handleChangePagination = (pageNumber: number) => {
-    setPage(pageNumber);
-  };
-  const onSearch = (value: string) => {
-    if (value === '') value = DEFAULT_SEARCH_PARAM;
-    setLoading(true);
-    setSearch(value);
-  };
-  const hangleRatedFilm = async (movieId: number, rating: number) => {
+  const handleChangePagination = useCallback(
+    (pageNumber: number) => {
+      setPage(pageNumber);
+    },
+    []
+  );
+
+  const onSearch = useCallback(
+    (value: string) => {
+      if (value === '') value = DEFAULT_SEARCH_PARAM;
+      setLoading(true);
+      setSearch(value);
+    },
+    []
+  );
+
+  const hangleRatedFilm = useCallback(async (movieId: number, rating: number) => {
     const data = await postRatedFilm({ movieId, rating });
     if (!data) setError(true);
-  };
+  }, []);
 
   if (error) return <Error />;
 
