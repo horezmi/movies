@@ -37,7 +37,6 @@ const SearchTab: React.FC = (): JSX.Element => {
     },
     [page]
   );
-
   const onSearch = useCallback(
     (value: string) => {
       if (value === '') value = DEFAULT_SEARCH_PARAM;
@@ -46,7 +45,6 @@ const SearchTab: React.FC = (): JSX.Element => {
     },
     [search]
   );
-
   const hangleRatedFilm = useCallback(async (movieId: number, rating: number) => {
     const data = await postRatedFilm({ movieId, rating });
     if (!data) setError(true);
