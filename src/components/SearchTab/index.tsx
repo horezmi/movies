@@ -4,7 +4,6 @@ import { getSearchedMovies, postRatedFilm } from 'api';
 import { MoviesType } from 'types/interfaces';
 import { DEFAULT_SEARCH_PARAM } from 'constants/index';
 
-import 'antd/dist/antd.css';
 import './index.scss';
 
 const SearchTab: React.FC = (): JSX.Element => {
