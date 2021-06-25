@@ -2,8 +2,6 @@ import { getLocalStorage } from 'helpers/functions/localStorage';
 import { RatedFilmType } from 'types/interfaces';
 import { BASE_URL, API_KEY } from 'constants/index';
 
-const sessionId: string = getLocalStorage('sessionId');
-
 const fetchData = async (url: string, value: object = {}) => {
   if (!value) {
     try {
@@ -39,6 +37,8 @@ const createGuestSession = async () => {
   return data;
 };
 const postRatedFilm = async ({ movieId, rating }: RatedFilmType) => {
+  const sessionId: string = getLocalStorage('sessionId');
+
   const data = await fetchData(`${BASE_URL}movie/${movieId}/rating?api_key=${API_KEY}&guest_session_id=${sessionId}`, {
     method: 'POST',
     headers: {
@@ -50,6 +50,8 @@ const postRatedFilm = async ({ movieId, rating }: RatedFilmType) => {
   return data;
 };
 const getRatedFilms = async () => {
+  const sessionId: string = getLocalStorage('sessionId');
+
   const data = await fetchData(`${BASE_URL}guest_session/${sessionId}/rated/movies?api_key=${API_KEY}`);
   return data;
 };
@@ -58,4 +60,4 @@ const getGenres = async () => {
   return data;
 };
 
-export { fetchData, getSearchedMovies, createGuestSession, postRatedFilm, getRatedFilms, getGenres, BASE_URL, API_KEY };
+export { fetchData, getSearchedMovies, createGuestSession, postRatedFilm, getRatedFilms, getGenres };

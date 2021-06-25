@@ -14,8 +14,10 @@ import './index.scss';
 
 const { TabPane } = Tabs;
 
+const sessionIdLs: string = getLocalStorage('sessionId');
+
 const App: React.FC = (): JSX.Element => {
-  const [sessionId, setSessionId] = useState<string>(getLocalStorage('sessionId') || '');
+  const [sessionId, setSessionId] = useState<string>(sessionIdLs || '');
   const [ratedMovies, setRatedMovies] = useState<MoviesType[]>([]);
   const [genres, setGenres] = useState<GenresType[]>([]);
   const [error, setError] = useState<boolean>(false);
