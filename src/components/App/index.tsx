@@ -12,6 +12,8 @@ import { MoviesType, GenresType } from 'types/interfaces';
 import 'antd/dist/antd.css';
 import './index.scss';
 
+const { TabPane } = Tabs;
+
 const App: React.FC = (): JSX.Element => {
   const [sessionId, setSessionId] = useState<string>(getLocalStorage('sessionId') || '');
   const [ratedMovies, setRatedMovies] = useState<MoviesType[]>([]);
@@ -57,8 +59,6 @@ const App: React.FC = (): JSX.Element => {
   const handleChangeTab = useCallback((activeTab: string) => {
     if (activeTab === 'ratingTab') getRatedMovies();
   }, []);
-
-  const { TabPane } = Tabs;
 
   if (error) return <Error />;
 

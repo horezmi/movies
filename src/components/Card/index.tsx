@@ -1,4 +1,4 @@
-import React, { memo, useState, useContext, useCallback } from 'react';
+import React, { memo, useState, useContext, useCallback, useMemo } from 'react';
 import { Card as CardAntd, Rate } from 'antd';
 import moviesAppContext from 'context';
 import { GenresType, CardPropsType } from 'types/interfaces';
@@ -44,7 +44,7 @@ const Card = ({
     }
   }, []);
 
-  const genresList: GenresType[] = genre_ids.map((id: number) => {
+  const genresList: GenresType[] = useMemo(() => genre_ids.map((id: number) => {
     let genre;
     for (let i = 0; i < genres.length; i++) {
       if (genres[i].id === id) {
@@ -56,7 +56,7 @@ const Card = ({
       }
     }
     return genre;
-  });
+  }), [genre_ids, genres]);
 
   return (
     <div className="card-wrap">
