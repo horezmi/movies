@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Card as CardAntd, Rate } from 'antd';
 import moviesAppContext from 'context';
 import { GenresType, CardPropsType } from 'types/interfaces';
+import { IMAGE_URL, DEFAULT_IMAGE_URL } from 'constants/index';
 
 import cutText from 'helpers/Functions/CutText';
 
@@ -19,13 +20,13 @@ const Card = ({
   genre_ids,
   rating = 0,
 }: CardPropsType): JSX.Element => {
-  const [srcImg, setSrcImg] = useState<string>(`https://image.tmdb.org/t/p/w500${poster_path}`);
+  const [srcImg, setSrcImg] = useState<string>(`${IMAGE_URL}${poster_path}`);
   const [starValue, setStarValue] = useState<number>(rating);
 
   const { genres } = useContext(moviesAppContext);
 
   const onErrorImg = () => {
-    setSrcImg('https://www.wildhareboca.com/wp-content/uploads/sites/310/2018/03/image-not-available.jpg');
+    setSrcImg(DEFAULT_IMAGE_URL);
   };
   const circleClasses = cn({
     'card-info__rating-circle': true,

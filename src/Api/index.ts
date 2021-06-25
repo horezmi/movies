@@ -1,8 +1,7 @@
 import { getLocalStorage } from 'helpers/Functions/LocalStorage';
 import { RatedFilmType } from 'types/interfaces';
+import { BASE_URL, API_KEY } from 'constants/index';
 
-const BASE_URL: string = 'https://api.themoviedb.org/3/';
-const API_KEY: string = 'c44b5b2b9ec7f5830a7641106c455833';
 const sessionId: string = getLocalStorage('sessionId');
 
 const fetchData = async (url: string, value: object = {}) => {
