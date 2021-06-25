@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 
 import { Tabs } from 'antd';
 import { SearchTab, RatingTab, Error } from 'components';
@@ -84,4 +84,4 @@ const App: React.FC = (): JSX.Element => {
   );
 };
 
-export default App;
+export default memo(App);

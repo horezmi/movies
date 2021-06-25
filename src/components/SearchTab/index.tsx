@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import { SearchPanel, CardList, Pagination, Loader, Error } from 'components';
 import { getSearchedMovies, postRatedFilm } from 'api';
 import { MoviesType } from 'types/interfaces';
@@ -64,4 +64,4 @@ const SearchTab: React.FC = (): JSX.Element => {
   );
 };
 
-export default SearchTab;
+export default memo(SearchTab);

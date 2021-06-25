@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Pagination as PaginationAntd } from 'antd';
 import { PaginationPropsType } from 'types/interfaces';
 
@@ -21,4 +21,4 @@ const Pagination = ({ onChange, totalPages, currentPage }: PaginationPropsType):
   );
 };
 
-export default Pagination;
+export default memo(Pagination);

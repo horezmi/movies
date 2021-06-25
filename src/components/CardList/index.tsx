@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { nanoid } from 'nanoid';
 import { Card } from 'components';
 import { CardListPropsType } from 'types/interfaces';
@@ -13,4 +13,4 @@ const CardList = ({ movies = [], onChangeStar }: CardListPropsType): JSX.Element
   return <div className="card-list">{cards}</div>;
 };
 
-export default CardList;
+export default memo(CardList);

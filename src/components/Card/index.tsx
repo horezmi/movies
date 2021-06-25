@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { memo, useState, useContext } from 'react';
 import { Card as CardAntd, Rate } from 'antd';
 import moviesAppContext from 'context';
 import { GenresType, CardPropsType } from 'types/interfaces';
@@ -92,4 +92,4 @@ const Card = ({
   );
 };
 
-export default Card;
+export default memo(Card);

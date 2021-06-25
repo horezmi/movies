@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import { Input } from 'antd';
 import { SearchPanelPropsType } from 'types/interfaces';
 
@@ -33,4 +33,4 @@ const SearchPanel = ({ onSearch }: SearchPanelPropsType): JSX.Element => {
   );
 };
 
-export default SearchPanel;
+export default memo(SearchPanel);

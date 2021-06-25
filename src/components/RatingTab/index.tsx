@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import { CardList, Loader, Error } from 'components';
 import { postRatedFilm } from 'api';
 import { RatingTabPropsType } from 'types/interfaces';
@@ -33,4 +33,4 @@ const RatingTab = ({ ratedMovies }: RatingTabPropsType): JSX.Element => {
   return <div className="rating-tab">{ratedMovies ? content : <Loader />}</div>;
 };
 
-export default RatingTab;
+export default memo(RatingTab);
