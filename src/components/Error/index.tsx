@@ -3,7 +3,7 @@ import { Alert } from 'antd';
 
 import './index.scss';
 
-const Error = () => (
+const Error: React.FC = (): JSX.Element => (
   <Alert message="Oops something went wrong" description="Check your internet or restart page" type="error" closable />
 );
 
