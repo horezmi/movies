@@ -8,24 +8,29 @@ import './index.scss';
 const RatingTab = ({ ratedMovies }: RatingTabPropsType): JSX.Element => {
   const [error, setError] = useState<boolean>(false);
 
-  const hangleRatedFilm = useCallback(async (movieId: number, rating: number) => {
-    const data = await postRatedFilm({ movieId, rating });
-    if (!data) setError(true);
-  }, [ratedMovies]);
-
-  const content = useMemo(() => {
-    if (ratedMovies?.length === 0) return <div className="rating-tab__no-movies"><h1>No movies</h1></div>;
-
-    return (
-      <div className="rating-tab__main">
-        <CardList movies={ratedMovies} onChangeStar={hangleRatedFilm} />
-      </div>
-    );
-  }, [ratedMovies]);
+  const hangleRatedFilm = useCallback(
+    async (movieId: number, rating: number) => {
+      const data = await postRatedFilm({ movieId, rating });
+      if (!data) setError(true);
+    },
+    [ratedMovies]
+  );
 
   if (error) return <Error />;
 
-  return <div className="rating-tab">{ratedMovies ? content : <Loader />}</div>;
+  if (ratedMovies?.length === 0) return <h1>No rated movies</h1>;
+
+  return (
+    <div className="rating-tab">
+      {!ratedMovies?.length ? (
+        <Loader />
+      ) : (
+        <div className="rating-tab__main">
+          <CardList movies={ratedMovies} onChangeStar={hangleRatedFilm} />
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default memo(RatingTab);
