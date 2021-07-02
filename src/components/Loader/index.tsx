@@ -3,7 +3,7 @@ import { Spin } from 'antd';
 
 import './index.scss';
 
-const Loader: React.FC = (): JSX.Element => (
+const Loader: React.FC = () => (
   <div className="loader">
     <Spin size="large" />
   </div>

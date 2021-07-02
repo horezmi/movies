@@ -6,7 +6,7 @@ import { DEFAULT_SEARCH_PARAM } from 'constants/index';
 
 import './index.scss';
 
-const SearchTab: React.FC = (): JSX.Element => {
+const SearchTab: React.FC = () => {
   const [movies, setMovies] = useState<MoviesType[]>([]);
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);

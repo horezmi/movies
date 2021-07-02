@@ -16,7 +16,7 @@ const { TabPane } = Tabs;
 
 const sessionIdLs: string = getLocalStorage('sessionId');
 
-const App: React.FC = (): JSX.Element => {
+const App: React.FC = () => {
   const [sessionId, setSessionId] = useState<string>(sessionIdLs || '');
   const [ratedMovies, setRatedMovies] = useState<MoviesType[]>([]);
   const [genres, setGenres] = useState<GenresType[]>([]);
