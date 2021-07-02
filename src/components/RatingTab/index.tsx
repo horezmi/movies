@@ -18,7 +18,7 @@ const RatingTab = ({ ratedMovies }: RatingTabPropsType): JSX.Element => {
 
   if (error) return <Error />;
 
-  if (ratedMovies?.length === 0) return <h1>No rated movies</h1>;
+  if (ratedMovies?.length === 0) return <h1 className="rating-tab__no-movies">No rated movies</h1>;
 
   return (
     <div className="rating-tab">
